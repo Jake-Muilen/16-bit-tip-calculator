@@ -113,7 +113,7 @@
     }
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.75rem;
       color: #333;
       margin: 10px 0;
     }
@@ -191,19 +191,20 @@
         <option value="0.10">10%</option>
         <option value="0.15" selected>15%</option>
         <option value="0.20">20%</option>
+        <option value="0.25">25%</option>
       </select>
     </div>
 
     <div class="section">
-      <h2>Total Barback Hours</h2>
+      <h2>Total Barback Hours for the Night</h2>
       <div class="slidecontainer">
-        <input type="range" min="1" max="30" value="5" step="0.5" class="slider" id="barbackHours">
+        <input type="range" min="1" max="40" value="5" step="0.25" class="slider" id="barbackHours">
       </div>
       <h3 id="barbackHoursOutput">5 hrs</h3>
     </div>
 
     <div class="result">
-      <h2>Estimated Hourly Pay:</h2>
+      <h2>Estimated Hourly Tips:</h2>
       <h3 id="result">$0.00/hr</h3>
       <p id="outputText"></p>
     </div>
