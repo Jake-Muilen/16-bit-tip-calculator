@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>16-Bit Hourly Calc</title>
   <style>
+    :root {
+      --accent-color: #4caf50; /* Default color is green */
+    }
+
     body {
       font-family: 'Arial', sans-serif;
       background-color: #868686;
@@ -39,6 +43,7 @@
       max-width: 80%;
       height: auto;
       border-radius: 8px;
+      cursor: pointer;
     }
 
     h1 {
@@ -88,7 +93,7 @@
       -webkit-appearance: none;
       width: 24px;
       height: 24px;
-      background: #4caf50;
+      background: var(--accent-color); /* Use dynamic accent color */
       border-radius: 50%;
       cursor: pointer;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -97,7 +102,7 @@
     .slider::-moz-range-thumb {
       width: 24px;
       height: 24px;
-      background: #4caf50;
+      background: var(--accent-color); /* Use dynamic accent color */
       border-radius: 50%;
       cursor: pointer;
     }
@@ -130,7 +135,7 @@
 
     .result h3 {
       font-size: 2rem;
-      color: #4caf50;
+      color: var(--accent-color); /* Use dynamic accent color */
       font-weight: bold;
     }
 
@@ -172,7 +177,7 @@
   <div class="container">
     <!-- Image (optional, update the path if needed) -->
     <div class="photo-container">
-      <img src="images/bit.png" alt="Calculator Image" class="photo">
+      <img src="images/bit.png" alt="Calculator Image" class="photo" id="bitImage">
     </div>
 
     <h1>16-Bit Barback Tip Calculator</h1>
@@ -219,6 +224,28 @@
       let barbackHoursOutput = document.getElementById("barbackHoursOutput");
       let resultOutput = document.getElementById("result");
       let outputText = document.getElementById("outputText");
+      let bitImage = document.getElementById("bitImage");
+
+      // Colors to cycle through
+      const accentColors = [
+        '#4caf50', // Green
+        '#00bcd4', // Cyan
+        '#ff5722', // Orange
+        '#9c27b0', // Purple
+        '#ff9800', // Amber
+        '#2196f3'  // Blue
+      ];
+
+      let currentColorIndex = 0;
+
+      // Function to change accent color
+      function changeAccentColor() {
+        currentColorIndex = (currentColorIndex + 1) % accentColors.length;
+        document.documentElement.style.setProperty('--accent-color', accentColors[currentColorIndex]);
+      }
+
+      // Image click event to change the accent color
+      bitImage.addEventListener('click', changeAccentColor);
 
       function calculateBarbackTips() {
         let nightlyIncome = parseFloat(profitSlider.value);
